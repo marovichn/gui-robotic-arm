@@ -19,7 +19,7 @@ const JointUISteps: FC<JointUIProps> = ({ ankle }) => {
   };
 
   return (
-    <div className='border-[1px] border-black w-full h-1/5 flex flex-col items-center justify-center'>
+    <div className='border-[1px] border-black w-full h-full flex flex-col items-center justify-center'>
       <div className='flex w-full justify-between my-1 items-center gap-3 p-2'>
         <StepCommand
           direction='counterclockwise'
@@ -40,6 +40,7 @@ const JointUISteps: FC<JointUIProps> = ({ ankle }) => {
               ref={inputRef}
               onInput={updateSteps}
               type='number'
+              placeholder="0"
               min={0}
               className='rounded-full p-2 text-black pl-5 w-[100px]'
             />

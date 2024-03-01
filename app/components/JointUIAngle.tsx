@@ -5,7 +5,7 @@ import { FC, useRef, useState } from "react";
 interface JointUIAngleProps {ankle:number}
 
 const JointUIAngle: FC<JointUIAngleProps> = ({ankle}) => {
-  const [rotDir, setRotDir] = useState<number | null>(null); // null for not selected, 1 for clockwise, 0 for counterclockwise
+  const [rotDir, setRotDir] = useState<number>(0);
   const angleRef = useRef<HTMLInputElement>(null);
 
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -13,8 +13,9 @@ const JointUIAngle: FC<JointUIAngleProps> = ({ankle}) => {
     try {
       const angle = angleRef.current?.value;
       if (angle !== undefined && angle !== null && rotDir !== null) {
+        console.log(ankle,rotDir,angle)
         const response = await fetch(
-          `http://localhost:3000/angularcommand/${rotDir}-${angle}`
+          `http://localhost:3000/angularcommand/${ankle}-${rotDir}-${angle}`
         );
         if (response.ok) {
           // Request successful, handle response if needed
@@ -32,7 +33,7 @@ const JointUIAngle: FC<JointUIAngleProps> = ({ankle}) => {
   };
 
   return (
-    <div className='flex flex-col border-[1px] border-black bg-zinc-800 w-full h-full  items-center justify-center'>
+    <div className='flex flex-col border-[1px] border-black bg-zinc-800 w-full h-full  items-center justify-center py-2'>
       <div className='text-white flex flex-col items-center justify-center'>
         <form onSubmit={onSubmit} className='flex flex-col gap-y-2'>
           <div className='flex items-center gap-x-2'>
@@ -40,6 +41,7 @@ const JointUIAngle: FC<JointUIAngleProps> = ({ankle}) => {
               type='number'
               ref={angleRef}
               min={0}
+              placeholder='0°'
               className='rounded-full p-2 text-black pl-5 w-[100px] bg-white'
             />
             <div

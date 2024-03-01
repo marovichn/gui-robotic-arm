@@ -40,7 +40,7 @@ const StepCommand: FC<StepCommandProps> = ({
       {direction == "counterclockwise" ? (
         <div
           onClick={() => {}}
-          className='vbg-[#303841] bg-black p-2 rounded-full hover:bg-[#F5F5F5]  hover:cursor-pointer group transition'
+          className='vbg-[#303841] bg-black p-2 rounded-full hover:bg-[#F5F5F5]  hover:cursor-pointer group transition ml-4'
         >
           <CiCircleChevLeft
             className='text-white group-hover:text-black'

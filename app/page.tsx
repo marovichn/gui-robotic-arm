@@ -3,6 +3,7 @@ import CommandButton from "./components/CommandButton"; */
 import Image from "next/image";
 import JointUISteps from "./components/JointUISteps";
 import JointUIAngle from "./components/JointUIAngle";
+import ActionButtons from "./components/ActionButtons";
 
 export default function Home() {
   return (
@@ -33,7 +34,7 @@ export default function Home() {
           <div className='w-1/3 h-full bg-gray-300'></div>
           <div className='w-2/3 h-full bg-gray-100'>
             <div className='flex w-full h-[90%] bg-gray-100'>
-              <div className='flex w-1/2 flex-col items-start justify-center h-full'>
+              <div className='flex w-1/2 flex-col items-start justify-center h-full overflow-y-auto'>
                 <JointUISteps ankle={5}></JointUISteps>
                 <JointUISteps ankle={4}></JointUISteps>
                 <JointUISteps ankle={3}></JointUISteps>
@@ -48,21 +49,7 @@ export default function Home() {
                 <JointUIAngle ankle={1}></JointUIAngle>
               </div>
             </div>
-            <div className='w-full h-[10%] bg-zinc-800 p-2'>
-              <div className='bg-white w-full h-full rounded-lg flex items-center justify-between '>
-                <div className='flex items-center justify-center w-[30%] font-bold'>
-                  RUN
-                </div>
-                <div className='w-[0.5%] bg-zinc-800 h-full'></div>
-                <div className='flex items-center justify-center w-[30%] font-bold'>
-                  STOP
-                </div>
-                <div className='w-[0.5%] bg-zinc-800 h-full'></div>
-                <div className='flex items-center justify-center w-[39%] font-bold'>
-                  SAVE ANGLE POSITION
-                </div>
-              </div>
-            </div>
+            <ActionButtons></ActionButtons>
           </div>
         </div>
       </div>
