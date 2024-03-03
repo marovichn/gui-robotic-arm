@@ -1,11 +1,16 @@
-"use client"
+"use client";
 
 import { FC, useRef, useState } from "react";
+import { useAppState } from "../../context/AngleContext";
 
-interface JointUIAngleProps {ankle:number}
+interface JointUIAngleProps {
+  ankle: number;
+}
 
-const JointUIAngle: FC<JointUIAngleProps> = ({ankle}) => {
+const JointUIAngle: FC<JointUIAngleProps> = ({ ankle }) => {
+  const { updateAnkleData } = useAppState();
   const [rotDir, setRotDir] = useState<number>(0);
+  const [angle, setAngle] = useState<number>(0);
   const angleRef = useRef<HTMLInputElement>(null);
 
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -13,7 +18,7 @@ const JointUIAngle: FC<JointUIAngleProps> = ({ankle}) => {
     try {
       const angle = angleRef.current?.value;
       if (angle !== undefined && angle !== null && rotDir !== null) {
-        console.log(ankle,rotDir,angle)
+        console.log(ankle, rotDir, angle);
         const response = await fetch(
           `http://localhost:3000/angularcommand/${ankle}-${rotDir}-${angle}`
         );
@@ -38,6 +43,12 @@ const JointUIAngle: FC<JointUIAngleProps> = ({ankle}) => {
         <form onSubmit={onSubmit} className='flex flex-col gap-y-2'>
           <div className='flex items-center gap-x-2'>
             <input
+              onChange={(e: React.FormEvent<HTMLInputElement>) => {
+                const angle = angleRef.current?.value;
+                const angleNumber = Number(angle);
+                updateAnkleData(ankle, rotDir, angleNumber);
+                setAngle(angleNumber);
+              }}
               type='number'
               ref={angleRef}
               min={0}
@@ -45,7 +56,10 @@ const JointUIAngle: FC<JointUIAngleProps> = ({ankle}) => {
               className='rounded-full p-2 text-black pl-5 w-[100px] bg-white'
             />
             <div
-              onClick={() => setRotDir(0)}
+              onClick={() => {
+                updateAnkleData(ankle, 0, angle);
+                setRotDir(0);
+              }}
               className={`w-9 h-9 rounded-full text-black flex items-center justify-center font-bold cursor-pointer ${
                 rotDir === 0 ? "bg-green-500" : "bg-white"
               }`}
@@ -53,7 +67,10 @@ const JointUIAngle: FC<JointUIAngleProps> = ({ankle}) => {
               R
             </div>
             <div
-              onClick={() => setRotDir(1)}
+              onClick={() => {
+                updateAnkleData(ankle, 1, angle);
+                setRotDir(1);
+              }}
               className={`w-9 h-9 rounded-full text-black flex items-center justify-center font-bold cursor-pointer ${
                 rotDir === 1 ? "bg-green-500" : "bg-white"
               }`}
@@ -61,9 +78,14 @@ const JointUIAngle: FC<JointUIAngleProps> = ({ankle}) => {
               L
             </div>
           </div>
-          <button className='w-full p-5 h-10 bg-white rounded-full mt-3 flex items-center justify-center text-black font-bold transition hover:shadow-md hover:shadow-white'>
-            MOVE joint {ankle}
-          </button>
+          <div className='w-full flex'>
+            <button
+              type='submit'
+              className='w-full p-5 h-10 bg-white rounded-full mt-3 flex items-center justify-center text-black font-bold transition hover:shadow-md hover:shadow-white'
+            >
+              MOVE joint {ankle}
+            </button>
+          </div>
         </form>
       </div>
     </div>
