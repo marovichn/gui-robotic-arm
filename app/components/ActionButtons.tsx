@@ -42,6 +42,46 @@ const ActionButtons: FC<ActionButtonsProps> = ({}) => {
     }}
     }
   };
+/* 
+  const handleRun = async () => {
+    console.log(ankleData);
+    const promises = [];
+
+    for (const key in ankleData) {
+      if (Object.hasOwnProperty.call(ankleData, key)) {
+        const item = ankleData[key];
+        if (
+          item.angle !== undefined &&
+          item.angle !== null &&
+          item.rotDir !== null
+        ) {
+          promises.push(
+            new Promise(async (resolve, reject) => {
+              setTimeout(async () => {
+                try {
+                  const response = await fetch(
+                    `http://localhost:3000/angularcommand/${key}-${item.rotDir}-${item.angle}`
+                  );
+                  console.log(key, item.rotDir, item.angle);
+                  if (response.ok) {
+                    console.log("Data sent successfully");
+                    resolve("Data sent successfully");
+                  } else {
+                    console.error("Failed to send data");
+                    reject("Failed to send data");
+                  }
+                } catch (error) {
+                  console.error("Error:", error);
+                  reject(error);
+                }
+              }, Number(key) * 1000);
+            })
+          );
+        }
+      }
+    }
+    await Promise.all(promises);
+  }; */
 
   const handleStop = () => {
     //stop command
