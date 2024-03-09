@@ -19,19 +19,27 @@ const ActionButtons: FC<ActionButtonsProps> = ({}) => {
           item.angle !== null &&
           item.rotDir !== null
         ) {
-          const response = await fetch(
-            `http://localhost:3000/angularcommand/${key}-${item.rotDir}-${item.angle}`
-          );
-          console.log(key, item.rotDir, item.angle);
-          if (response.ok) {
-            // Request successful, handle response if needed
-            console.log("Data sent successfully");
-          } else {
-            // Request failed
-            console.error("Failed to send data");
+          await new Promise((resolve, reject) => {
+        setTimeout(async () => {
+          try {
+            const response = await fetch(
+              `http://localhost:3000/angularcommand/${key}-${item.rotDir}-${item.angle}`
+            );
+            console.log(key, item.rotDir, item.angle);
+            if (response.ok) {
+              console.log("Data sent successfully");
+              resolve("Data sent successfully"); 
+            } else {
+              console.error("Failed to send data");
+              reject("Failed to send data"); 
+            }
+          } catch (error) {
+            console.error("Error:", error);
+            reject(error); // Reject the promise if there is an error during fetch
           }
-        } 
-      }
+        }, Number(key) * 1000);
+      });
+    }}
     }
   };
 
