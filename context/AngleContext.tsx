@@ -37,9 +37,9 @@ const AppStateContext = createContext<AppState>({
 });
 
 // Create a provider component to wrap your app
-export const AppStateProvider: React.FC<{ children: React.ReactNode }> = ({
+export const AppStateProvider = ({
   children,
-}) => {
+}:{children: React.ReactNode}) => {
   const [key, setKey] = useState<number>(0);
   const [ankleData, setAnkleData] = useState<{ [key: number]: AnkleData }>({
     1: { rotDir: 0, angle: 0 },
