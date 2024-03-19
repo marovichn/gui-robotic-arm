@@ -31,6 +31,7 @@ const AppStateContext = createContext<AppState>({
     3: { rotDir: 0, angle: 0 },
     4: { rotDir: 0, angle: 0 },
     5: { rotDir: 0, angle: 0 },
+    6: { rotDir: 0, angle: 0 },
   },
   updateAnkleData: () => {},
   savePosition: () => {},
@@ -47,6 +48,7 @@ export const AppStateProvider = ({
     3: { rotDir: 0, angle: 0 },
     4: { rotDir: 0, angle: 0 },
     5: { rotDir: 0, angle: 0 },
+    6: { rotDir: 0, angle: 0 },
   });
   const [positions, setPositions] = useState<Position[]>([]);
 
@@ -61,6 +63,7 @@ export const AppStateProvider = ({
       ];
     });
     setKey((p) => p + 1);
+    console.log(ankleData)
   };
 
   const updateAnkleData = (ankle: number, rotDir: number, angle: number) => {
