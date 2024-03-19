@@ -14,7 +14,6 @@ const Model = dynamic(() => import("./components/Model"), {
   ssr: false,
 });
 
-
 export default function Home() {
   return (
     <AppStateProvider>
@@ -43,11 +42,18 @@ export default function Home() {
         <div className='bg-gray-200 w-[80%] h-screen fixed'>
           <div className='flex w-full h-full pt-14'>
             <div className='w-1/3 h-full bg-gray-300'>
-              <div className='w-full h-full'>
+              {/* <div className='w-full h-full'>
                 <RenderModel className=""><Model2></Model2></RenderModel>
+              </div> */}
+              <div className='w-full h-full object-cover'>
+                <Image
+                  src='/3dcapture.png'
+                  alt='3d capture'
+                  width={5312}
+                  height={6528}
+                  className='w-full h-full object-cover'
+                ></Image>
               </div>
-              {/* <div className="w-full h-full object-cover">
-              <Image src="/3dcapture.png" alt="3d capture" width={5312} height={6528} className="w-full h-full object-cover"></Image></div> */}
             </div>
             <div className='w-2/3 h-full bg-gray-100'>
               <div className='flex w-full h-[90%] bg-gray-100'>
