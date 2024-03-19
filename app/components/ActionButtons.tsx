@@ -37,7 +37,7 @@ const ActionButtons: FC<ActionButtonsProps> = ({}) => {
             console.error("Error:", error);
             reject(error); // Reject the promise if there is an error during fetch
           }
-        }, Number(key) * 1000);
+        }, Number(key) * 500);
       });
     }}
     }

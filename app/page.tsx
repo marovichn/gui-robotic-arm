@@ -10,6 +10,8 @@ import PositionsUI from "./components/PositionsUI";
 import dynamic from "next/dynamic";
 import RenderModel from "./components/RenderModel";
 import { Model2 } from "./components/Model2";
+import { redirect } from "next/navigation";
+import Link from "next/link";
 const Model = dynamic(() => import("./components/Model"), {
   ssr: false,
 });
@@ -18,7 +20,10 @@ export default function Home() {
   return (
     <AppStateProvider>
       <main className='min-h-screen w-full bg-[#eaeaea]'>
-        <nav className='fixed top-0 w-full h-14 bg-[#F5F5F5] shadow-xl z-50'>
+        <Link
+        href="https://nikolalmn.vercel.app/"
+          className='fixed top-0 w-full h-14 bg-[#F5F5F5] shadow-xl z-50 cursor-pointer'
+        >
           <div className='flex items-center w-full h-full justify-between'>
             <div className='h-12 w-14 flex items-center'>
               <Image
@@ -38,7 +43,7 @@ export default function Home() {
               ></Image>
             </div>
           </div>
-        </nav>
+        </Link>
         <div className='bg-gray-200 w-[80%] h-screen fixed'>
           <div className='flex w-full h-full pt-14'>
             <div className='w-1/3 h-full bg-gray-300'>
