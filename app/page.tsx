@@ -1,5 +1,3 @@
-/* import AngleCommand from "./components/AngleCommand";
-import CommandButton from "./components/CommandButton"; */
 import Image from "next/image";
 import JointUISteps from "./components/JointUISteps";
 import JointUIAngle from "./components/JointUIAngle";
@@ -8,9 +6,6 @@ import ActionButtons from "./components/ActionButtons";
 import PositionsUI from "./components/PositionsUI";
 
 import dynamic from "next/dynamic";
-import RenderModel from "./components/RenderModel";
-import { Model2 } from "./components/Model2";
-import { redirect } from "next/navigation";
 import Link from "next/link";
 const Model = dynamic(() => import("./components/Model"), {
   ssr: false,

@@ -1,4 +1,4 @@
-/* import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 import { OBJLoader } from "three/addons/loaders/OBJLoader.js";
@@ -79,4 +79,3 @@ const Model: React.FC = () => {
 };
 
 export default Model;
- */
