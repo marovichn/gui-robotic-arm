@@ -5,11 +5,8 @@ import { AppStateProvider } from "../context/AngleContext";
 import ActionButtons from "./components/ActionButtons";
 import PositionsUI from "./components/PositionsUI";
 
-import dynamic from "next/dynamic";
 import Link from "next/link";
-const Model = dynamic(() => import("./components/Model"), {
-  ssr: false,
-});
+
 
 export default function Home() {
   return (
